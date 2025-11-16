@@ -36,6 +36,16 @@ export default function Footer() {
                   블로그
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://instagram.com/elicon_official"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  엘리콘 공식 인스타그램
+                </a>
+              </li>
             </ul>
           </div>
 

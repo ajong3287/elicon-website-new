@@ -47,7 +47,7 @@ export default function Header() {
                   rel="noopener noreferrer"
                   className="hover:text-blue-600"
                 >
-                  쇼핑몰
+                  B2C Shop
                 </a>
               </li>
               <li>
@@ -101,7 +101,7 @@ export default function Header() {
                   rel="noopener noreferrer"
                   className="block hover:text-blue-600"
                 >
-                  쇼핑몰
+                  B2C Shop
                 </a>
               </li>
               <li>
