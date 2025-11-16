@@ -1,3 +1,5 @@
+/* Pretendard 폰트 (CDN) - @import는 최상단에 위치 */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
 @import "tailwindcss";
 
 :root {
@@ -8,7 +10,16 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+
+  /* 브랜드 컬러 (front-end-spec.md) */
+  --color-deep-navy: #1A2C4B;
+  --color-bright-teal: #00BFA5;
+  --color-soft-gray: #F5F5F5;
+  --color-charcoal: #333333;
+
+  /* 폰트 패밀리 */
+  --font-pretendard: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+  --font-sans: var(--font-pretendard);
   --font-mono: var(--font-geist-mono);
 }
 
