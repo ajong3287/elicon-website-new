@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import InstagramFeed from '@/app/_components/social/instagram-feed';
 
 export const metadata: Metadata = {
   title: 'Wing - 스포츠 아이웨어 | 엘리콘',
@@ -195,7 +196,13 @@ export default function WingBrandPage() {
         </div>
       </section>
 
-      <div className="text-center">
+      <InstagramFeed
+        username="wing_eyewear_official"
+        limit={6}
+        title="Wing 인스타그램"
+      />
+
+      <div className="text-center mt-8">
         <Link
           href="/brands"
           className="inline-block text-[--color-bright-teal] hover:text-[--color-deep-navy] font-semibold transition-colors"

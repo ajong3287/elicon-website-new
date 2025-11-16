@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import InstagramFeed from '@/app/_components/social/instagram-feed';
 
 export const metadata: Metadata = {
   title: 'Seanex - 두족류 전문 낚시 | 엘리콘',
@@ -196,7 +197,13 @@ export default function SeanexBrandPage() {
         </div>
       </section>
 
-      <div className="text-center">
+      <InstagramFeed
+        username="seanex_official"
+        limit={6}
+        title="Seanex 인스타그램"
+      />
+
+      <div className="text-center mt-8">
         <Link
           href="/brands"
           className="inline-block text-[--color-bright-teal] hover:text-[--color-deep-navy] font-semibold transition-colors"
