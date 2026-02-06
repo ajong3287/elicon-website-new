@@ -4,19 +4,35 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:lighthouse": "npm run build && npx lighthouse http://localhost:3000 --output=json --output-path=./lighthouse-report.json --chrome-flags='--headless'",
+    "test:performance": "npx lighthouse http://localhost:3000 --only-categories=performance --output=json",
+    "test:accessibility": "npx lighthouse http://localhost:3000 --only-categories=accessibility --output=json",
+    "test:seo": "npx lighthouse http://localhost:3000 --only-categories=seo --output=json",
+    "test:all": "npm run build && npm run test:lighthouse && node scripts/analyze-lighthouse.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
-    "framer-motion": "^12.23.24",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.4.2",
+    "@splinetool/react-spline": "^4.1.0",
+    "@splinetool/runtime": "^1.12.5",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.23.25",
     "lucide-react": "^0.553.0",
     "next": "16.0.3",
+    "next-pwa": "^5.6.0",
+    "next-themes": "^0.4.6",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-hook-form": "^7.66.0",
+    "react-hot-toast": "^2.6.0",
+    "react-scroll-parallax": "^3.5.0",
     "resend": "^6.4.2",
+    "tailwind-merge": "^3.4.0",
+    "three": "^0.181.2",
     "zod": "^4.1.12"
   },
   "devDependencies": {
@@ -31,6 +47,6 @@
     "playwright": "^1.56.1",
     "prettier": "^3.6.2",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "5.9.3"
   }
 }

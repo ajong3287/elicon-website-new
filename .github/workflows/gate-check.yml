@@ -1,0 +1,65 @@
+name: gate-check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check required docs exist
+        run: |
+          REQUIRED_DOCS=(
+            "docs/00_SSOT_POINTER.md"
+            "docs/01_PROJECT_BRIEF.md"
+            "docs/02_SCOPE_AC.md"
+            "docs/ops/RUNBOOK.md"
+          )
+
+          MISSING=()
+          for doc in "${REQUIRED_DOCS[@]}"; do
+            if [ ! -f "$doc" ]; then
+              MISSING+=("$doc")
+            fi
+          done
+
+          if [ ${#MISSING[@]} -gt 0 ]; then
+            echo "❌ GATE FAIL: Missing required docs:"
+            for m in "${MISSING[@]}"; do
+              echo "  - $m"
+            done
+            exit 1
+          fi
+
+          echo "✅ DOC GATE PASS"
+
+      - name: Check docs are not empty
+        run: |
+          REQUIRED_DOCS=(
+            "docs/00_SSOT_POINTER.md"
+            "docs/01_PROJECT_BRIEF.md"
+            "docs/02_SCOPE_AC.md"
+            "docs/ops/RUNBOOK.md"
+          )
+
+          for doc in "${REQUIRED_DOCS[@]}"; do
+            SIZE=$(wc -c < "$doc")
+            if [ "$SIZE" -lt 50 ]; then
+              echo "❌ GATE FAIL: $doc is too short (<50 chars). Fill it."
+              exit 1
+            fi
+          done
+
+          echo "✅ CONTENT GATE PASS"
+
+      - name: Run local gate script if exists
+        run: |
+          if [ -f "scripts/gate_check.py" ]; then
+            python3 scripts/gate_check.py
+          else
+            echo "scripts/gate_check.py not found (optional)"
+          fi

@@ -1,10 +1,12 @@
-# Product Requirements Document (PRD): 01_elicon_homepage
-# (제품 요구사항 명세서)
+# Product Requirements Document (PRD): 01_2_elicon_homepage
+# (엘리콘 홈페이지 리뉴얼 - 제품 요구사항 명세서)
 
-**Version:** 1.0
+**Version:** 1.2
 **Date:** 2025-11-15
+**Last Updated:** 2025-12-04 (2025 웹 트렌드 대량 적용, 기술 스택 업데이트)
 **Owner:** 서대표
 **Facilitator:** Analyst (Mary)
+**Note:** 이 프로젝트는 기존 01_elicon_homepage의 리뉴얼 버전입니다. Git: elicon-website-new.git
 **Related Documents:** [Project Brief](./project-brief.md)
 
 ---
@@ -130,14 +132,26 @@
 ## 4. Technical Assumptions (기술 가정)
 
 **Stack:**
-- **Framework:** Next.js 14 (App Router)
-- **Styling:** Tailwind CSS
+- **Framework:** Next.js 16.0.3 (App Router)
+- **React:** React 19.2.0
+- **Styling:** Tailwind CSS 4
+- **3D Graphics:** Three.js + @react-three/fiber + @react-three/drei
+- **Animations:** Framer Motion 12.23.24
 - **Deployment:** Vercel (또는 동일 환경)
 - **CMS (향후):** Markdown 기반 콘텐츠 관리 또는 Headless CMS 연동 고려
 
 **Dependencies:**
 - 인스타그램 피드 연동: Instagram Basic Display API 또는 third-party 서비스 (예: SnapWidget)
 - Form 제출: Netlify Forms, Formspree, 또는 자체 백엔드 API
+- 3D 모델링: Three.js 기반 실시간 렌더링
+- 스크롤 애니메이션: Framer Motion + Intersection Observer API
+
+**2025 웹 디자인 트렌드 적용 (2025-12-04 추가):**
+- Noise Texture Effect (SVG 필터)
+- Bento Grid Layout (비대칭 레이아웃)
+- Glassmorphism (frosted glass 효과, backdrop-filter)
+- Micro-interactions (호버, 스크롤 트리거 애니메이션)
+- Slide-in CTA (사용자 행동 기반 팝업, localStorage)
 
 ---
 

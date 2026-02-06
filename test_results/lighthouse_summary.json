@@ -1,0 +1,17 @@
+{
+  "lighthouse_scores": {
+    "performance": 68,
+    "accessibility": 99,
+    "best-practices": 100,
+    "seo": 92
+  },
+  "core_web_vitals": {
+    "FCP": "1.8\u00a0s",
+    "LCP": "7.7\u00a0s",
+    "TBT": "120\u00a0ms",
+    "CLS": "0.075",
+    "SI": "5.5\u00a0s"
+  },
+  "url": "http://localhost:3001/",
+  "fetch_time": "2025-12-10T06:27:55.261Z"
+}

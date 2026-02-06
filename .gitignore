@@ -39,3 +39,21 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# lighthouse reports
+lighthouse-report*.json
+lighthouse-report*.html
+
+# test reports
+VERIFICATION_REPORT.md
+
+# PWA (next-pwa auto-generated)
+**/public/sw.js
+**/public/workbox-*.js
+**/public/worker-*.js
+**/public/sw.js.map
+**/public/workbox-*.js.map
+**/public/worker-*.js.map
+
+# Large video files (use CDN instead)
+public/videos/**/*.mp4

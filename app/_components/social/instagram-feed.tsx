@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Skeleton from '@/app/_components/ui/Skeleton';
 
 interface InstagramPost {
   id: string;
@@ -61,9 +62,11 @@ export default function InstagramFeed({
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {[...Array(limit)].map((_, i) => (
-              <div
+              <Skeleton
                 key={i}
-                className="aspect-square bg-gray-200 rounded-lg animate-pulse"
+                variant="rectangular"
+                className="aspect-square rounded-lg"
+                animation="wave"
               />
             ))}
           </div>
@@ -100,7 +103,7 @@ export default function InstagramFeed({
               href={post.permalink}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative aspect-square overflow-hidden rounded-lg bg-gray-100 hover:scale-105 transition-transform duration-300"
+              className="scroll-fade-in group relative aspect-square overflow-hidden rounded-lg bg-gray-100 hover:scale-105 transition-transform duration-300"
             >
               <Image
                 src={

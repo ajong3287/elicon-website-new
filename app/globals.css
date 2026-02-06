@@ -1,10 +1,19 @@
-/* Pretendard 폰트 (CDN) - @import는 최상단에 위치 */
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+/* ========================================
+   2025 TREND #29: Variable Fonts
+   Pretendard Variable Font (하나의 파일로 100-900 weight 지원)
+   60% 용량 감소 + 부드러운 애니메이션
+   ======================================== */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css');
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+}
+
+:root.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 @theme inline {
@@ -17,21 +26,1075 @@
   --color-soft-gray: #F5F5F5;
   --color-charcoal: #333333;
 
-  /* 폰트 패밀리 */
-  --font-pretendard: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
-  --font-sans: var(--font-pretendard);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Dark Mode 브랜드 컬러 */
+  --color-deep-navy-dark: #2A3C5B;
+  --color-bright-teal-dark: #00D4B8;
+  --color-soft-gray-dark: #1E1E1E;
+  --color-charcoal-dark: #E5E5E5;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* 4축 디자인: 브랜드별 색상 */
+  --color-elicon-navy: #1a365d;
+  --color-elicon-navy-gradient: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+  --color-wing-red: #e63946;
+  --color-cocolic-blue: #457b9d;
+  --color-seanex-cyan: #06b6d4;
+
+  /* 폰트 패밀리 - 4축 디자인 Typography */
+  --font-playfair: var(--font-playfair), 'Playfair Display', serif;
+  --font-inter: var(--font-inter), 'Inter', sans-serif;
+  --font-jetbrains: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
+  --font-pretendard: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+
+  /* 기본 폰트 설정 */
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-playfair);
+  --font-mono: var(--font-jetbrains);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 애니메이션 정의 */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* 그라데이션 애니메이션 */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+/* Skeleton 로딩 애니메이션 */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+}
+
+/* Reduced Motion 지원 */
+@media (prefers-reduced-motion: reduce) {
+  .animate-shimmer,
+  .animate-pulse,
+  .animate-blob,
+  .animate-gradient {
+    animation: none;
+  }
+}
+
+/* View Transitions API (2025 트렌드) */
+@supports (view-transition-name: none) {
+  /* 페이지 전환 애니메이션 */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.3s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* 페이드 효과 */
+  ::view-transition-old(root) {
+    animation-name: fade-out;
+  }
+
+  ::view-transition-new(root) {
+    animation-name: fade-in;
+  }
+
+  /* 개별 요소 전환 (view-transition-name 사용 시) */
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0.4s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Reduced Motion: View Transitions 비활성화 */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Scroll-driven Animations (2025 트렌드) */
+@supports (animation-timeline: scroll()) {
+  /* 스크롤 시 페이드 인 애니메이션 */
+  .scroll-fade-in {
+    animation: fade-in-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+  }
+
+  /* 스크롤 시 확대 애니메이션 */
+  .scroll-scale-in {
+    animation: scale-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+  }
+
+  /* 스크롤 시 슬라이드 애니메이션 */
+  .scroll-slide-in-left {
+    animation: slide-in-left linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+  }
+
+  .scroll-slide-in-right {
+    animation: slide-in-right linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+  }
+
+  /* 스크롤 parallax 효과 */
+  .scroll-parallax-slow {
+    animation: parallax-slow linear both;
+    animation-timeline: scroll();
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes parallax-slow {
+  to {
+    transform: translateY(50px);
+  }
+}
+
+/* Reduced Motion: Scroll-driven Animations 비활성화 */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-fade-in,
+  .scroll-scale-in,
+  .scroll-slide-in-left,
+  .scroll-slide-in-right,
+  .scroll-parallax-slow {
+    animation: none !important;
+  }
+}
+
+/* ========================================
+   2025 TREND #31: Intersection Observer V2
+   실제 가시성 추적 (trackVisibility, delay)
+   브라우저 지원: 88%+ (2025)
+   ======================================== */
+
+/* 요소가 뷰포트에 들어왔을 때 */
+.is-intersecting {
+  /* 기본 교차 상태 */
+}
+
+/* 요소가 실제로 보일 때 (V2 기능) */
+.is-actually-visible {
+  /* 광고 노출 카운팅, 애니메이션 트리거 등 */
+}
+
+/* 광고 뷰 추적 예시 */
+.ad-visible {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.ad-visible.is-actually-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 분석 이벤트 트리거용 클래스 */
+[data-actually-visible="true"] {
+  /* 실제 가시성 기반 스타일 */
+}
+
+/* 뷰포트 진입 애니메이션 (V2 활용) */
+.fade-in-on-visible {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.fade-in-on-visible.is-actually-visible {
+  opacity: 1;
+}
+
+/* ========================================
+   2025 TREND #32: Micro-interactions
+   작지만 섬세한 UI 인터랙션
+   ======================================== */
+
+/* Ripple 효과 */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  transform: scale(0);
+  animation: ripple-animation 0.6s ease-out;
+  pointer-events: none;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* 버튼 호버 효과 */
+.btn-hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.btn-hover-lift:active {
+  transform: translateY(0);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 입력 필드 포커스 효과 */
+.input-focus-glow {
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.input-focus-glow:focus {
+  border-color: var(--color-bright-teal);
+  box-shadow: 0 0 0 3px rgba(0, 191, 165, 0.1);
+  outline: none;
+}
+
+/* 카드 호버 효과 */
+.card-hover-interactive {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover-interactive:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* 체크박스/라디오 커스텀 애니메이션 */
+.checkbox-bounce {
+  transition: transform 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.checkbox-bounce:checked {
+  transform: scale(1.1);
+}
+
+/* 토글 스위치 부드러운 전환 */
+.toggle-smooth {
+  transition: background-color 0.3s ease, transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* 호버 시 섬세한 스케일 */
+.hover-scale-subtle {
+  transition: transform 0.2s ease;
+}
+
+.hover-scale-subtle:hover {
+  transform: scale(1.05);
+}
+
+.hover-scale-subtle:active {
+  transform: scale(0.98);
+}
+
+/* Dynamic Island Animations (iOS 16 스타일, 2025 트렌드) */
+@keyframes island-expand {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes island-collapse {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+}
+
+@keyframes shrink {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+.animate-island-expand {
+  animation: island-expand 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-island-collapse {
+  animation: island-collapse 0.3s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+}
+
+/* Dynamic Island: Spring physics effect */
+.dynamic-island-toast {
+  will-change: transform, opacity;
+  transform-origin: top center;
+}
+
+/* Glassmorphism 2.0 (Frosted Glass, 2025 트렌드) */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* Safari 지원 */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+/* Glassmorphism hover effects */
+.glass-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-hover:hover {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 48px 0 rgba(31, 38, 135, 0.25);
+}
+
+/* Reduced Motion: Glassmorphism 비활성화 */
+@media (prefers-reduced-motion: reduce) {
+  .glass-hover:hover {
+    transform: none;
+  }
+}
+
+/* ========================================
+   2025 TREND #26: @property CSS Animations
+   ======================================== */
+
+/* @property로 커스텀 속성 정의 (애니메이션 가능) */
+@property --gradient-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --gradient-color-1 {
+  syntax: '<color>';
+  initial-value: #00BFA5;
+  inherits: false;
+}
+
+@property --gradient-color-2 {
+  syntax: '<color>';
+  initial-value: #1A2C4B;
+  inherits: false;
+}
+
+/* 회전하는 그라디언트 애니메이션 */
+.animate-gradient-rotate {
+  background: linear-gradient(
+    var(--gradient-angle),
+    var(--gradient-color-1),
+    var(--gradient-color-2)
+  );
+  animation: rotate-gradient 8s linear infinite;
+}
+
+@keyframes rotate-gradient {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+
+/* 색상 전환 애니메이션 */
+.animate-color-shift {
+  background: var(--gradient-color-1);
+  animation: shift-colors 5s ease-in-out infinite;
+}
+
+@keyframes shift-colors {
+  0%, 100% {
+    --gradient-color-1: #00BFA5;
+  }
+  50% {
+    --gradient-color-1: #1A2C4B;
+  }
+}
+
+/* ========================================
+   2025 TREND #27: CSS Nesting (Native)
+   ======================================== */
+
+/* CSS Nesting으로 Sass 없이 중첩 스타일 작성 */
+.card-modern {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s ease;
+
+  /* hover 상태 중첩 */
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+
+    /* hover 내 자식 요소 */
+    .card-title {
+      color: var(--color-bright-teal);
+    }
+  }
+
+  /* 자식 요소 중첩 */
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+
+    /* 타이틀 내 강조 요소 */
+    span {
+      color: var(--color-bright-teal);
+      font-weight: 800;
+    }
+  }
+
+  .card-description {
+    font-size: 1rem;
+    color: var(--color-charcoal);
+    line-height: 1.6;
+  }
+
+  .card-footer {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #e5e5e5;
+
+    /* 푸터 버튼 */
+    button {
+      background: var(--color-bright-teal);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: var(--color-deep-navy);
+        transform: scale(1.05);
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+  }
+
+  /* 미디어 쿼리 내에서도 중첩 가능 */
+  @media (max-width: 768px) {
+    padding: 16px;
+
+    .card-title {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+/* Dark Mode에서 Nesting */
+.dark {
+  .card-modern {
+    background: rgba(26, 44, 75, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    &:hover {
+      background: rgba(26, 44, 75, 0.9);
+      box-shadow: 0 12px 24px rgba(0, 191, 165, 0.2);
+    }
+
+    .card-description {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .card-footer {
+      border-top-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+/* ========================================
+   Variable Fonts 활용 클래스
+   ======================================== */
+
+/* 부드러운 폰트 웨이트 전환 */
+.font-weight-animate {
+  font-family: 'Pretendard Variable', sans-serif;
+  font-weight: 400;
+  transition: font-weight 0.3s ease;
+}
+
+.font-weight-animate:hover {
+  font-weight: 700;
+}
+
+/* 반응형 타이포그래피 (Variable Fonts) */
+.heading-responsive {
+  font-family: 'Pretendard Variable', sans-serif;
+  font-weight: 300;
+
+  @media (min-width: 640px) {
+    font-weight: 400;
+  }
+
+  @media (min-width: 1024px) {
+    font-weight: 600;
+  }
+}
+
+/* 강조 텍스트 (부드러운 전환) */
+.text-emphasis {
+  font-family: 'Pretendard Variable', sans-serif;
+  font-variation-settings: 'wght' 400;
+  transition: font-variation-settings 0.3s ease;
+}
+
+.text-emphasis:hover {
+  font-variation-settings: 'wght' 800;
+}
+
+/* ========================================
+   2025 TREND #30: Popover API (Native)
+   JavaScript 없이 Popover 구현
+   ======================================== */
+
+/* Popover 기본 스타일 */
+[popover] {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+
+  /* 애니메이션 */
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, overlay 0.3s ease allow-discrete, display 0.3s ease allow-discrete;
+}
+
+/* Popover 열릴 때 */
+[popover]:popover-open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Backdrop 스타일 */
+[popover]::backdrop {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+/* Dark Mode Popover */
+.dark [popover] {
+  background: rgba(26, 44, 75, 0.95);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+/* Starting styles for animated entry */
+@starting-style {
+  [popover]:popover-open {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+/* ========================================
+   2025 TREND #36: CSS Scroll Snap
+   JavaScript 없이 네이티브 캐러셀
+   브라우저 지원: 95%+ (Chrome 69+, Safari 11+, Firefox 68+)
+   ======================================== */
+
+/* Scroll Snap Container */
+.scroll-snap-container {
+  /* 부드러운 스크롤 */
+  scroll-behavior: smooth;
+
+  /* 스크롤바 숨기기 (선택사항) */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scroll-snap-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Scroll Snap Item */
+.scroll-snap-item {
+  /* 스냅 포인트 */
+  scroll-margin: 1rem;
+}
+
+/* 브랜드 캐러셀 전용 스타일 */
+.brand-carousel {
+  /* 그리드 레이아웃 */
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(280px, 1fr);
+
+  /* 모바일: 한 카드씩 */
+  @media (max-width: 640px) {
+    grid-auto-columns: 90%;
+  }
+
+  /* 태블릿: 두 카드씩 */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    grid-auto-columns: 45%;
+  }
+
+  /* 데스크톱: 세 카드씩 */
+  @media (min-width: 1025px) {
+    grid-auto-columns: 30%;
+  }
+}
+
+/* 풀페이지 스냅 */
+.full-page-snap {
+  /* 뷰포트 높이 */
+  height: 100vh;
+  overflow-y: scroll;
+
+  /* 부드러운 스크롤 */
+  scroll-behavior: smooth;
+}
+
+.full-page-section {
+  /* 뷰포트 높이 */
+  min-height: 100vh;
+
+  /* 중앙 정렬 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========================================
+   2025 TREND #37: CSS Anchor Positioning API
+   요소 간 자동 위치 연결
+   브라우저 지원: Chrome 125+ (점진적 향상)
+   ======================================== */
+
+/* Anchor Element */
+.anchor-element {
+  position: relative;
+}
+
+/* Anchor Positioned Element */
+.anchor-positioned {
+  position: absolute;
+
+  /* Fallback for non-supporting browsers */
+  @supports not (position-anchor: --test) {
+    /* 기존 absolute positioning 사용 */
+    top: 100%;
+    left: 0;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Tooltip 스타일 */
+.tooltip-trigger {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.tooltip-content {
+  /* 애니메이션 */
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+.tooltip-trigger:hover .tooltip-content {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Dropdown 스타일 */
+.dropdown-content {
+  /* 애니메이션 */
+  animation: dropdown-enter 0.2s ease;
+}
+
+@keyframes dropdown-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Anchor Positioning with @supports */
+@supports (position-anchor: --test) {
+  .anchor-positioned {
+    /* position-anchor가 지원되면 자동 위치 조정 */
+    position: fixed;
+  }
+
+  .tooltip-content {
+    /* 뷰포트 끝에서 자동 반전 */
+    inset-area: top;
+  }
+}
+
+/* ========================================
+   2025 TREND #38-40: Modern Carousel Primitives
+   실험적 기능 (Chrome 135+ Canary)
+   - ::scroll-button() - 자동 prev/next 버튼
+   - ::scroll-marker - 자동 네비게이션 마커
+   - scroll-state() - 스냅 상태 쿼리
+   ======================================== */
+
+/* Modern Carousel Container */
+.modern-carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(300px, 1fr);
+  gap: 1rem;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+
+  /* 스크롤바 숨기기 */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.modern-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-item {
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+
+/* ========================================
+   TREND #38-40: Modern Carousel Primitives (실험적)
+   Chrome 135+ Canary에서만 지원
+   현재 빌드 호환성 문제로 주석 처리
+   ======================================== */
+
+/*
+EXPERIMENTAL FEATURES - Chrome 135+ Canary only
+표준 CSS 파서에서 에러 발생으로 주석 처리
+
+TREND #38: ::scroll-button() 의사요소
+TREND #39: ::scroll-marker 의사요소
+TREND #40: scroll-state() 쿼리
+
+사용 방법:
+1. Chrome Canary 설치
+2. chrome://flags에서 "Experimental Web Platform features" 활성화
+3. 아래 주석 해제하여 테스트
+
+.modern-carousel::scroll-button(inline-start) {
+  width: 48px;
+  height: 48px;
+  background: var(--color-bright-teal);
+  color: white;
+  border-radius: 50%;
+}
+
+.modern-carousel::scroll-marker {
+  width: 10px;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+}
+
+.carousel-item:scroll-state(snapped) {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+*/
+
+/* Interactive Carousel Fallback (Trend #36 CSS Scroll Snap 사용) */
+.interactive-carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 80%;
+  gap: 2rem;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 10%;
+  padding: 2rem;
+}
+
+.carousel-item {
+  /* 기본 스타일 유지 */
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.3s ease;
+}
+
+/* ========================================
+   4축 디자인: Background Effects
+   ======================================== */
+
+/* Noise Texture Background */
+.noise-bg {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* Glassmorphism 2.0 */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+.dark .glass-card {
+  background: rgba(26, 54, 93, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.glass-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-hover:hover {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 48px 0 rgba(31, 38, 135, 0.25);
+}
+
+.dark .glass-hover:hover {
+  background: rgba(26, 54, 93, 0.7);
+  box-shadow: 0 12px 48px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Typography Classes */
+.font-heading {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.font-brand {
+  font-family: var(--font-jetbrains);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* Brand Gradients */
+.gradient-elicon {
+  background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+}
+
+.gradient-wing {
+  background: linear-gradient(135deg, #e63946 0%, #f77f00 100%);
+}
+
+.gradient-cocolic {
+  background: linear-gradient(135deg, #457b9d 0%, #a8dadc 100%);
+}
+
+.gradient-seanex {
+  background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+}
+
+/* Enhanced Floating Animation for Blobs */
+@keyframes float-enhanced {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(30px, -30px) scale(1.05);
+  }
+  50% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+  75% {
+    transform: translate(20px, -10px) scale(1.02);
+  }
+}
+
+.animate-float-enhanced {
+  animation: float-enhanced 20s ease-in-out infinite;
+}
+
+.animation-delay-5000 {
+  animation-delay: 5s;
+}
+
+.animation-delay-10000 {
+  animation-delay: 10s;
+}
+
+/* Gradient Animation for Backgrounds */
+@keyframes gradient-animate {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.bg-animated-gradient {
+  background-size: 200% 200%;
+  animation: gradient-animate 15s ease infinite;
+}
+
+/* Fade-in Animation Utility */
+.animate-fade-in {
+  animation: fade-in 0.3s ease-in-out;
 }

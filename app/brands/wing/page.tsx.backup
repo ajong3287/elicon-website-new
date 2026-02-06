@@ -1,0 +1,475 @@
+import Image from 'next/image';
+import Link from 'next/link';
+import type { Metadata } from 'next';
+import InstagramFeed from '@/app/_components/social/instagram-feed';
+// import Sunglasses3D from '@/app/_components/3d/Sunglasses3D'; // 임시 비활성화 - 컴파일 테스트
+import LensTechnologySection from '@/app/_components/wing/lens-technology-section';
+import KBOSponsorshipSection from '@/app/_components/wing/kbo-sponsorship-section';
+import WorldNo1Section from '@/app/_components/wing/world-no1-section';
+import BrandStorySection from '@/app/_components/wing/brand-story-section';
+import WhyWingFAQSection from '@/app/_components/wing/why-wing-faq-section';
+import UseCasesSection from '@/app/_components/wing/use-cases-section';
+import CustomerReviewsSection from '@/app/_components/wing/customer-reviews-section';
+import CompetitorComparisonSection from '@/app/_components/wing/competitor-comparison-section';
+import TCOCalculatorSection from '@/app/_components/wing/tco-calculator-section';
+import { OGKTechnologySection } from '@/app/_components/wing/ogk-technology-section';
+import { EliconTrustSection } from '@/app/_components/wing/elicon-trust-section';
+import { CustomerReviewSection } from '@/app/_components/wing/customer-review-section';
+import { OnlineStoreSection } from '@/app/_components/wing/online-store-section';
+
+export const metadata: Metadata = {
+  title: 'Wing - 스포츠고글·스키고글·수경 | 엘리콘',
+  description:
+    'OGK 45년 광학 전문 기술력의 Wing. 스포츠고글, 스키고글, 수경 등 사이클링, 스키, 수영 전문 아이웨어.',
+};
+
+export default function WingBrandPage() {
+  return (
+    <div className="max-w-5xl mx-auto px-4 py-16">
+      {/* 🎬 히어로 영상 섹션 - 임시 비활성화 (328MB 비디오 로딩 문제) */}
+      {/*
+      <section className="mb-16 -mt-16 -mx-4">
+        <div className="relative w-full aspect-video overflow-hidden rounded-lg shadow-2xl">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            className="w-full h-full object-cover"
+          >
+            <source src="/videos/wing/hero/wing-brand-film.mp4" type="video/mp4" />
+            브라우저가 video 태그를 지원하지 않습니다.
+          </video>
+
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+
+          <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 text-white">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">
+              Wing
+            </h1>
+            <p className="text-xl md:text-3xl font-semibold drop-shadow-lg">
+              글로벌 브랜드 20만원대 성능, 45,000원
+            </p>
+            <p className="text-sm md:text-base mt-2 opacity-90">
+              OGK 45년 광학 기술력 × 프리미엄 아이웨어
+            </p>
+          </div>
+        </div>
+      </section>
+      */}
+
+      <section className="mb-16">
+        <div className="flex flex-col md:flex-row items-center gap-8 mb-8">
+          <div
+            className="w-full md:w-1/3 glass-card p-8 rounded-lg flex justify-center relative overflow-hidden group"
+            style={{ viewTransitionName: 'brand-logo-wing' } as React.CSSProperties}
+          >
+            {/* 노이즈 텍스처 레이어 */}
+            <div
+              className="absolute inset-0 opacity-[0.02] pointer-events-none mix-blend-overlay"
+              style={{
+                backgroundImage: 'url(/noise.svg)',
+                backgroundSize: '200px 200px',
+                backgroundRepeat: 'repeat'
+              }}
+            ></div>
+            <Image
+              src="/images/brands/wing-logo.jpg"
+              alt="Wing 로고"
+              width={250}
+              height={130}
+              className="object-contain group-hover:scale-110 transition-transform duration-500 relative z-10"
+            />
+          </div>
+          <div className="w-full md:w-2/3">
+            <h1 className="text-4xl font-brand text-[--color-wing-red] mb-4 tracking-wide">
+              Wing
+            </h1>
+            <p className="text-xl text-[--color-wing-red] font-semibold mb-4">
+              글로벌 브랜드 20만원대 성능, Wing 45,000원
+            </p>
+            <p className="text-gray-700 leading-relaxed">
+              Wing은 한국오지케이의 45년 광학 전문 기술력을 바탕으로 탄생한
+              프리미엄 아이웨어 브랜드입니다. 사이클링, 스키/보드, 수영 등
+              다양한 스포츠 활동을 위한 최적의 시야를 제공합니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 3D 인터랙티브 모델 (2025 트렌드) - 임시 비활성화 */}
+      {/*
+      <section className="mb-16">
+        <h2 className="text-3xl font-heading text-[--color-charcoal] mb-8 text-center">
+          Wing 선글라스 3D 체험
+        </h2>
+        <p className="text-center text-gray-600 mb-6">
+          마우스로 드래그하여 360° 회전 | 휠로 확대/축소
+        </p>
+        <Sunglasses3D />
+      </section>
+      */}
+
+      <section className="mb-16">
+        <h2 className="text-3xl font-heading text-[--color-charcoal] mb-8">
+          브랜드 철학
+        </h2>
+        <div className="glass-card glass-hover p-8 rounded-lg relative overflow-hidden">
+          {/* 노이즈 텍스처 레이어 */}
+          <div
+            className="absolute inset-0 opacity-[0.02] pointer-events-none mix-blend-overlay"
+            style={{
+              backgroundImage: 'url(/noise.svg)',
+              backgroundSize: '200px 200px',
+              backgroundRepeat: 'repeat'
+            }}
+          ></div>
+          {/* 호버 시 배경 그라데이션 */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[--color-wing-red]/5 to-[--color-wing-red]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+          <p className="text-lg text-[--color-wing-red] font-semibold leading-relaxed mb-4 relative z-10">
+            "스포츠 전문 광학 설계로 최적의 시야를 제공한다"
+          </p>
+          <p className="text-gray-700 leading-relaxed relative z-10">
+            Wing은 다양한 스포츠를 즐기는 모든 이들에게 최고의 시야와
+            보호를 제공하기 위해 끊임없이 연구하고 개발합니다. 45년간 축적된
+            광학 기술 노하우로 스포츠고글, 스키고글, 수경 등 전문 아이웨어를
+            선보입니다.
+          </p>
+        </div>
+      </section>
+
+      <section className="mb-16">
+        <h2 className="text-3xl font-heading text-[--color-charcoal] mb-8">
+          핵심 강점
+        </h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="glass-card glass-hover p-8 rounded-lg relative overflow-hidden group">
+            {/* 노이즈 텍스처 */}
+            <div
+              className="absolute inset-0 opacity-[0.02] pointer-events-none mix-blend-overlay"
+              style={{
+                backgroundImage: 'url(/noise.svg)',
+                backgroundSize: '200px 200px',
+                backgroundRepeat: 'repeat'
+              }}
+            ></div>
+            {/* 호버 효과 */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[--color-wing-red]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+            <h3 className="text-xl font-bold text-[--color-wing-red] mb-4 relative z-10 group-hover:scale-110 transition-transform duration-300">
+              광학 전문 기술
+            </h3>
+            <p className="text-gray-600 leading-relaxed relative z-10">
+              45년 광학 전문 기술력으로 완성된 고품질 렌즈가 눈부심을
+              차단하고 선명한 시야를 제공합니다
+            </p>
+          </div>
+          <div className="glass-card glass-hover p-8 rounded-lg relative overflow-hidden group">
+            {/* 노이즈 텍스처 */}
+            <div
+              className="absolute inset-0 opacity-[0.02] pointer-events-none mix-blend-overlay"
+              style={{
+                backgroundImage: 'url(/noise.svg)',
+                backgroundSize: '200px 200px',
+                backgroundRepeat: 'repeat'
+              }}
+            ></div>
+            {/* 호버 효과 */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[--color-wing-red]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+            <h3 className="text-xl font-bold text-[--color-wing-red] mb-4 relative z-10 group-hover:scale-110 transition-transform duration-300">
+              한국오지케이 제조
+            </h3>
+            <p className="text-gray-600 leading-relaxed relative z-10">
+              45년 업력의 검증된 A급 제조사 한국오지케이의 정밀한 제작 공정으로
+              최상의 품질을 보증합니다
+            </p>
+          </div>
+          <div className="glass-card glass-hover p-8 rounded-lg relative overflow-hidden group">
+            {/* 노이즈 텍스처 */}
+            <div
+              className="absolute inset-0 opacity-[0.02] pointer-events-none mix-blend-overlay"
+              style={{
+                backgroundImage: 'url(/noise.svg)',
+                backgroundSize: '200px 200px',
+                backgroundRepeat: 'repeat'
+              }}
+            ></div>
+            {/* 호버 효과 */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[--color-wing-red]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+            <h3 className="text-xl font-bold text-[--color-wing-red] mb-4 relative z-10 group-hover:scale-110 transition-transform duration-300">
+              전문 스포츠 라인업
+            </h3>
+            <p className="text-gray-600 leading-relaxed relative z-10">
+              스포츠고글, 스키고글, 수경 등 사이클링, 스키, 수영 전문 아이웨어
+              라인업을 제공합니다
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 🎥 OGK 제조 기술 영상 섹션 */}
+      <section className="mb-16">
+        <h2 className="text-3xl font-heading text-[--color-charcoal] mb-8">
+          OGK 제조 기술
+        </h2>
+        <div className="aspect-video rounded-lg overflow-hidden shadow-2xl bg-black">
+          <iframe
+            className="w-full h-full"
+            src="https://www.youtube.com/embed/y7CICx5HY5U"
+            title="OGK 스포컴 제조 기술 - Arirang TV"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
+        <p className="mt-4 text-gray-600 text-center text-sm md:text-base">
+          아리랑TV가 소개하는 OGK의 45년 광학 기술력과 스마트 공장 시스템
+        </p>
+      </section>
+
+      <section className="mb-16">
+        <h2 className="text-3xl font-heading text-[--color-charcoal] mb-8">
+          제품 라인업
+        </h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="glass-card glass-hover p-8 rounded-lg relative overflow-hidden group">
+            {/* 노이즈 텍스처 */}
+            <div
+              className="absolute inset-0 opacity-[0.02] pointer-events-none mix-blend-overlay"
+              style={{
+                backgroundImage: 'url(/noise.svg)',
+                backgroundSize: '200px 200px',
+                backgroundRepeat: 'repeat'
+              }}
+            ></div>
+            {/* 호버 효과 */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[--color-wing-red]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+            <h3 className="text-xl font-semibold text-[--color-wing-red] mb-4 relative z-10">
+              스포츠 선글라스
+            </h3>
+            <p className="text-gray-700 mb-4 leading-relaxed relative z-10">
+              캠핑, 런닝, 등산 등 다양한 아웃도어 활동을 위한 편광 스포츠 선글라스
+            </p>
+            <ul className="text-gray-600 space-y-2 relative z-10">
+              <li>- 경량 프레임으로 장시간 착용 편안</li>
+              <li>- UV400 차단으로 눈 건강 보호</li>
+              <li>- 충격 방지 렌즈로 안전성 확보</li>
+              <li>- 다양한 스포츠 환경 최적화</li>
+            </ul>
+          </div>
+          <div className="glass-card glass-hover p-8 rounded-lg relative overflow-hidden group">
+            {/* 노이즈 텍스처 */}
+            <div
+              className="absolute inset-0 opacity-[0.02] pointer-events-none mix-blend-overlay"
+              style={{
+                backgroundImage: 'url(/noise.svg)',
+                backgroundSize: '200px 200px',
+                backgroundRepeat: 'repeat'
+              }}
+            ></div>
+            {/* 호버 효과 */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[--color-wing-red]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+            <h3 className="text-xl font-semibold text-[--color-wing-red] mb-4 relative z-10">
+              스키/보드 고글
+            </h3>
+            <p className="text-gray-700 mb-4 leading-relaxed relative z-10">
+              설산 환경에 최적화된 프리미엄 스키/보드 고글 라인업
+            </p>
+            <ul className="text-gray-600 space-y-2 relative z-10">
+              <li>- 이중 렌즈 시스템으로 김서림 방지</li>
+              <li>- 넓은 시야각 확보</li>
+              <li>- 헬멧 호환 설계</li>
+              <li>- 교체 가능한 다양한 렌즈 옵션</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* OGK 5대 렌즈 기술 (기술력 증명) - 엘리나이 보고서 기반 */}
+      <OGKTechnologySection />
+
+      {/* 엘리콘 총판 신뢰도 (유통 전문성) */}
+      <EliconTrustSection />
+
+      {/* 실제 고객 리뷰 (사회적 증명 + 리뷰 인센티브) - ROI 9.0 전략 */}
+      <CustomerReviewSection />
+
+      {/* 온라인 스토어 강화 (옴니채널 + 스마트스토어 리뷰 연동) - ROI 4.5 전략 */}
+      <OnlineStoreSection />
+
+      {/* 45년 장인 정신 스토리 (감성) */}
+      <BrandStorySection />
+
+      {/* KBO 국가대표 공식 후원 (공신력) */}
+      <KBOSponsorshipSection />
+
+      {/* 세계 1위 헤드라인 및 타임라인 (역사/성과) */}
+      <WorldNo1Section />
+
+      {/* 렌즈 기술력 비교 (기술 검증) */}
+      <LensTechnologySection />
+
+      {/* 사용 시나리오 - 스키/낚시/사이클 (실전) */}
+      <UseCasesSection />
+
+      {/* "왜 Wing인가?" FAQ (설득) */}
+      <WhyWingFAQSection />
+
+      {/* 고객 후기 (사회적 증거) */}
+      <CustomerReviewsSection />
+
+      {/* 경쟁사 비교 (오클리 기준) */}
+      <CompetitorComparisonSection />
+
+      {/* TCO 계산기 (총 비용 비교) */}
+      <TCOCalculatorSection />
+
+      <section className="mb-16">
+        <h2 className="text-3xl font-heading text-[--color-charcoal] mb-8">
+          제조사 정보
+        </h2>
+        <div className="glass-card glass-hover p-8 rounded-lg relative overflow-hidden group">
+          {/* 노이즈 텍스처 */}
+          <div
+            className="absolute inset-0 opacity-[0.02] pointer-events-none mix-blend-overlay"
+            style={{
+              backgroundImage: 'url(/noise.svg)',
+              backgroundSize: '200px 200px',
+              backgroundRepeat: 'repeat'
+            }}
+          ></div>
+          {/* 배경 그라데이션 */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[--color-wing-red]/5 via-transparent to-[--color-wing-red]/10 opacity-50"></div>
+
+          <h3 className="text-2xl font-bold text-[--color-wing-red] mb-4 relative z-10">
+            주식회사 한국오지케이 (40년 업력)
+          </h3>
+          <p className="text-lg text-[--color-deep-navy] font-semibold mb-4 relative z-10">
+            1981년 설립 | 4대째 이어온 광학 제조 명가 | ESG 경영 선언
+          </p>
+          <p className="text-gray-700 leading-relaxed mb-6 relative z-10">
+            1981년 설립 이래 40년 이상 광학 제품 제조 분야에서 독보적인 기술력과
+            품질을 인정받아온 A급 제조사입니다. 4대째 이어온 장인 정신과
+            최신 광학 기술의 결합으로 국내외 시장에서 신뢰받는 브랜드로
+            자리매김하고 있습니다.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-6 relative z-10">
+            <div>
+              <p className="text-sm text-gray-600 mb-1">설립</p>
+              <p className="font-semibold text-[--color-wing-red]">1981년</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-600 mb-1">업력</p>
+              <p className="font-semibold text-[--color-wing-red]">40년 이상</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-600 mb-1">생산 거점</p>
+              <p className="font-semibold text-[--color-wing-red]">
+                한국/중국/베트남
+              </p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-600 mb-1">전문 분야</p>
+              <p className="font-semibold text-[--color-wing-red]">
+                광학 제품 제조
+              </p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-600 mb-1">제조 방식</p>
+              <p className="font-semibold text-[--color-wing-red]">
+                ODM/OEM/OBM
+              </p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-600 mb-1">등급</p>
+              <p className="font-semibold text-[--color-wing-red]">
+                A급 제조사
+              </p>
+            </div>
+          </div>
+
+          {/* ESG 경영 */}
+          <div className="mt-6 p-4 bg-green-50 rounded-lg relative z-10">
+            <p className="text-sm font-semibold text-green-700 mb-2">
+              🌱 ESG 경영 선언 (2023년 7월)
+            </p>
+            <p className="text-sm text-gray-700 leading-relaxed">
+              "환경을 위한 노력. 나부터, 우리부터, 작은 것부터 시작하겠습니다." - 박수안 회장
+            </p>
+          </div>
+
+          {/* 인증 및 수상 */}
+          <div className="mt-6 grid md:grid-cols-2 gap-4 relative z-10">
+            <div className="flex items-start space-x-2">
+              <span className="text-[--color-wing-red]">🏆</span>
+              <span className="text-sm text-gray-700">대통령 표창 (2009)</span>
+            </div>
+            <div className="flex items-start space-x-2">
+              <span className="text-[--color-wing-red]">🏭</span>
+              <span className="text-sm text-gray-700">삼성 스마트공장 (2022)</span>
+            </div>
+            <div className="flex items-start space-x-2">
+              <span className="text-[--color-wing-red]">🔬</span>
+              <span className="text-sm text-gray-700">기업부설연구소 운영</span>
+            </div>
+            <div className="flex items-start space-x-2">
+              <span className="text-[--color-wing-red]">🌍</span>
+              <span className="text-sm text-gray-700">북미 수출 40년+ 경험</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mb-8 grid md:grid-cols-2 gap-6">
+        <div className="bg-[--color-deep-navy] text-white p-8 rounded-lg text-center">
+          <h2 className="text-2xl font-bold mb-4">Wing 제품 구매하기</h2>
+          <p className="mb-6">
+            엘리콘 쇼핑몰에서 Wing 브랜드의 다양한 제품을 만나보세요.
+          </p>
+          <a
+            href="https://eliconstore.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-white text-[--color-deep-navy] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+          >
+            쇼핑몰 바로가기
+          </a>
+        </div>
+
+        <div className="bg-[--color-bright-teal] text-white p-8 rounded-lg text-center">
+          <h2 className="text-2xl font-bold mb-4">B2B 파트너십 문의</h2>
+          <p className="mb-6">
+            Wing 브랜드의 유통 파트너가 되고 싶으신가요?
+          </p>
+          <Link
+            href="/partnership"
+            className="inline-block bg-white text-[--color-bright-teal] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+          >
+            파트너십 문의하기
+          </Link>
+        </div>
+      </section>
+
+      <InstagramFeed
+        username="wing_eyewear_official"
+        limit={6}
+        title="Wing 인스타그램"
+      />
+
+      <div className="text-center mt-8">
+        <Link
+          href="/brands"
+          className="inline-block text-[--color-bright-teal] hover:text-[--color-deep-navy] font-semibold transition-colors"
+        >
+          &larr; 브랜드 목록으로 돌아가기
+        </Link>
+      </div>
+    </div>
+  );
+}

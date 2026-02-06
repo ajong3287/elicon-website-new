@@ -1,0 +1,59 @@
+{
+  "test_date": "2025-12-10T15:27:08.462323",
+  "url": "http://localhost:3001",
+  "responsive_test": {
+    "mobile": {
+      "viewport": "375x667",
+      "elements_found": {
+        "hero": true,
+        "brands": true,
+        "cta_buttons": true
+      },
+      "screenshot": "responsive_mobile.png",
+      "status": "✅ PASS"
+    },
+    "tablet": {
+      "viewport": "768x1024",
+      "elements_found": {
+        "hero": true,
+        "brands": true,
+        "cta_buttons": true
+      },
+      "screenshot": "responsive_tablet.png",
+      "status": "✅ PASS"
+    },
+    "desktop": {
+      "viewport": "1920x1080",
+      "elements_found": {
+        "hero": true,
+        "brands": true,
+        "cta_buttons": true
+      },
+      "screenshot": "responsive_desktop.png",
+      "status": "✅ PASS"
+    }
+  },
+  "cross_browser_test": {
+    "chromium": {
+      "status": "✅ PASS",
+      "css_checks": {
+        "glassmorphism": true,
+        "brand_colors": true,
+        "animations": true
+      },
+      "console_errors": 0,
+      "screenshot": "browser_chromium.png"
+    }
+  },
+  "accessibility_test": {
+    "checks": {
+      "alt_texts": 10,
+      "headings": 26,
+      "aria_labels": 5,
+      "buttons_with_text": 4,
+      "links": 23
+    },
+    "recommendations": [],
+    "status": "✅ PASS"
+  }
+}
